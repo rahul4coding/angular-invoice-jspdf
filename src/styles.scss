@@ -1,0 +1,17 @@
+@charset "UTF-8";
+// base stylesheet file
+
+// importing angular material theme
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// defined font for making it look good
+@font-face {
+    font-family: roboto;
+    src: url("./assets/roboto.ttf");
+}
+
+head, body {
+  font-family: roboto;
+  margin: 0;
+  padding: 0;
+}

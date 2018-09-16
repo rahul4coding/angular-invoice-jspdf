@@ -2,60 +2,60 @@
 <div class="container">
   <!-- heading -->
   <div id="print">
-  <div id="header">
-    <span>Invoice </span>
-  </div>
-  <!-- listing invoices -->
-  <div id="listArea">
-    <div *ngFor="let item of items" class="list-item">
-      <mat-card>
-        <!-- already available invoices -->
-        <span *ngIf="item.name != 'null'; else elseBlock1" class="title">{{ item.name }}</span>
-        <span *ngIf="item.quantity != -1; else elseBlock2" class="quantity">Q: {{ item.quantity }}</span>
-        <span *ngIf="item.rate != -1; else elseBlock3" class="rate">Price: ₹ {{ item.rate | number : '1.2-2' }}/-</span>
-        <span *ngIf="item.rate != -1 || item.quantity != -1; else elseBlock4" class="total">= ₹ {{ item.quantity *
-          item.rate | number : '1.2-2' }}</span>
-
-        <!-- for new invoice -->
-        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-          <ng-template #elseBlock1>
-            <mat-input-container>
-              <input [(ngModel)]="name" name="name" matInput placeholder="Item name" value="Item" required>
-            </mat-input-container>
-          </ng-template>
-
-
-          <ng-template #elseBlock2>
-            <mat-input-container>
-              <input [(ngModel)]="quantity" name="quantity" matInput placeholder="Quantity" value="0" required>
-            </mat-input-container>
-          </ng-template>
-
-
-          <ng-template #elseBlock3>
-            <mat-input-container>
-              <input [(ngModel)]="rate" name="rate" matInput placeholder="Enter price" value="0" required>
-            </mat-input-container>
-          </ng-template>
-
-
-          <ng-template #elseBlock4>
-            <mat-input-container>
-              <input matInput placeholder="Total cost" value="{{quantity * rate || 0}}">
-            </mat-input-container>
-          </ng-template>
-
-          <div class="btn">
-            <!-- accept button -->
-            <button *ngIf="editing && item.id === count" mat-raised-button>Add</button>
-            <!-- reject button -->
-            <button *ngIf="editing && item.id === count" (click)="revert()" mat-raised-button>Cancel</button>
-          </div>
-        </form>
-        
-      </mat-card>
+    <div id="header">
+      <span>Invoice </span>
     </div>
-  </div>
+    <!-- listing invoices -->
+    <div id="listArea">
+      <div *ngFor="let item of items" class="list-item">
+        <mat-card>
+          <!-- already available invoices -->
+          <span *ngIf="item.name != 'null'; else elseBlock1" class="title">{{ item.name }}</span>
+          <span *ngIf="item.quantity != -1; else elseBlock2" class="quantity">Q: {{ item.quantity }}</span>
+          <span *ngIf="item.rate != -1; else elseBlock3" class="rate">Price: ₹ {{ item.rate | number : '1.2-2' }}/-</span>
+          <span *ngIf="item.rate != -1 || item.quantity != -1; else elseBlock4" class="total">= ₹ {{ item.quantity *
+            item.rate | number : '1.2-2' }}</span>
+
+          <!-- for new invoice -->
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <ng-template #elseBlock1>
+              <mat-input-container>
+                <input [(ngModel)]="name" name="name" matInput placeholder="Item name" value="Item" required>
+              </mat-input-container>
+            </ng-template>
+
+
+            <ng-template #elseBlock2>
+              <mat-input-container>
+                <input [(ngModel)]="quantity" name="quantity" matInput placeholder="Quantity" value="0" required>
+              </mat-input-container>
+            </ng-template>
+
+
+            <ng-template #elseBlock3>
+              <mat-input-container>
+                <input [(ngModel)]="rate" name="rate" matInput placeholder="Enter price" value="0" required>
+              </mat-input-container>
+            </ng-template>
+
+
+            <ng-template #elseBlock4>
+              <mat-input-container>
+                <input matInput placeholder="Total cost" value="{{quantity * rate || 0}}">
+              </mat-input-container>
+            </ng-template>
+
+            <div class="btn">
+              <!-- accept button -->
+              <button *ngIf="editing && item.id === count" mat-raised-button>Add</button>
+              <!-- reject button -->
+              <button *ngIf="editing && item.id === count" (click)="revert()" mat-raised-button>Cancel</button>
+            </div>
+          </form>
+
+        </mat-card>
+      </div>
+    </div>
   </div>
   <!-- fab button for adding invoice -->
   <div id="fab">
@@ -68,10 +68,10 @@
   </div>
   <div id="fab1">
     <button mat-fab (click)="captureScreen()" [disabled]="editing">
-        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <title>picture_as_pdf</title>
-          <path fill="#fff" d="M14.016 11.484v-3h0.984v3h-0.984zM3.984 6v14.016h14.016v1.969h-14.016c-1.078 0-1.969-0.891-1.969-1.969v-14.016h1.969zM9 9.516v-1.031h0.984v1.031h-0.984zM20.484 8.484v-1.5h-3v6h1.5v-1.969h1.5v-1.5h-1.5v-1.031h1.5zM16.5 11.484v-3c0-0.844-0.656-1.5-1.5-1.5h-2.484v6h2.484c0.844 0 1.5-0.656 1.5-1.5zM11.484 9.516v-1.031c0-0.844-0.656-1.5-1.5-1.5h-2.484v6h1.5v-1.969h0.984c0.844 0 1.5-0.656 1.5-1.5zM20.016 2.016c1.078 0 1.969 0.891 1.969 1.969v12c0 1.078-0.891 2.016-1.969 2.016h-12c-1.078 0-2.016-0.938-2.016-2.016v-12c0-1.078 0.938-1.969 2.016-1.969h12z"></path>
-          </svg>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <title>picture_as_pdf</title>
+        <path fill="#fff" d="M14.016 11.484v-3h0.984v3h-0.984zM3.984 6v14.016h14.016v1.969h-14.016c-1.078 0-1.969-0.891-1.969-1.969v-14.016h1.969zM9 9.516v-1.031h0.984v1.031h-0.984zM20.484 8.484v-1.5h-3v6h1.5v-1.969h1.5v-1.5h-1.5v-1.031h1.5zM16.5 11.484v-3c0-0.844-0.656-1.5-1.5-1.5h-2.484v6h2.484c0.844 0 1.5-0.656 1.5-1.5zM11.484 9.516v-1.031c0-0.844-0.656-1.5-1.5-1.5h-2.484v6h1.5v-1.969h0.984c0.844 0 1.5-0.656 1.5-1.5zM20.016 2.016c1.078 0 1.969 0.891 1.969 1.969v12c0 1.078-0.891 2.016-1.969 2.016h-12c-1.078 0-2.016-0.938-2.016-2.016v-12c0-1.078 0.938-1.969 2.016-1.969h12z"></path>
+      </svg>
 
     </button>
   </div>
